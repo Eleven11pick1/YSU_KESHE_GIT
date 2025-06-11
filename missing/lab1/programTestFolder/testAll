@@ -1,0 +1,13 @@
+#!/bin/bash
+g++ pro_1.cpp -o pro_1
+g++ pro_2.cpp -o pro_2
+g++ pro_3.cpp -o pro_3
+
+for i in {1..3};do
+    ./pro_$i < input_$i.txt > actual_output_$i.txt
+    if diff -q actual_output_$i.txt output_$i.txt >/dev/null; then
+        echo "pro_$i test pass!"
+    else
+        echo "pro_$i test failed!"
+    fi
+done
